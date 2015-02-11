@@ -1,18 +1,10 @@
-#1D continuous space model for examining stochastic evolutionary processes during range expansion
+# Continuous space model for examining stochastic evolutionary processes during range expansion
 # Author: Ben Phillips
 
 
-where<-Sys.info()["sysname"]
-if (where=="Darwin"){
-  setwd("~/evo-dispersal/evostoch/")
-  #system(paste("R CMD SHLIB Density1D.c"))
-  system(paste("R CMD SHLIB PointMetrics1D.c"))
-}
-if (where=="Linux"){
-  setwd("/scratch/jc227089/evo-dispersal/evostoch/")
-  #system(paste("R CMD SHLIB Density1D.c"))
-  system(paste("R CMD SHLIB -L/usr/lib64/ -L/usr/lib/gcc/x86_64-redhat-linux/4.4.4/ PointMetrics1D.c"))
-}
+
+system(paste("R CMD SHLIB PointMetrics1D.c"))
+
 dyn.load("PointMetrics1D.so")
 
 

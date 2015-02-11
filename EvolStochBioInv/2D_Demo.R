@@ -1,9 +1,8 @@
 #To run locally
 
 
-source("~/evo-dispersal/evostoch/evostochFunctions.R")
+source("evostochFunctions.R")
 
-setwd("~/Dropbox/Papers/Submitted/Evolutionary stochasticity/Data/")
 library(SDMTools)
 
 
@@ -42,7 +41,7 @@ save(out, file="2DDemoRun.RData")
 #### Plotting ####
 
 plotset<-c(1, 3, 6) # which list elements to plot
-pdf(file="Figures/progression.pdf", width=12, height=length(plotset)*6)
+pdf(file="progression.pdf", width=12, height=length(plotset)*6)
 	par(mfrow=c(length(plotset), 2))
 	xylim<-range(c(out[[genset]]$pop[,"X"], out[[genset]]$pop[,"Y"]))
 	leg.pnts<-cbind(x=rep(c(xylim[1], xylim[1]*0.9), 2),
@@ -91,6 +90,6 @@ temp<-out[[genset]]$pop
 temp<-subset(temp, (temp[,"Y"]<1 & temp[,"Y"]>-1))
 temp<-temp[,colnames(temp)!="Y"]
 plotter.mean(temp, a=out[[genset]]$parameters$a, R0=out[[genset]]$parameters$R0,
-	filename="Figures/samplePop2D.pdf", H.init=0, Hsd.init=0.06, D.init=log(4), Dsd.init=0.06)
+	filename="samplePop2D.pdf", H.init=0, Hsd.init=0.06, D.init=log(4), Dsd.init=0.06)
 
 
