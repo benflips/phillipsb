@@ -147,7 +147,7 @@ repro.disp<-function(popmatrix, a, R0, h2H, h2D, VPH, VPD, evovar=TRUE, Allee.fx
 	popmatrix[,"HP"]<-popmatrix[,"H"]+rnorm(nrow(popmatrix), 0, SDVEH)
 	
 	# Disperse offspring
-	disp<-rnorm(nrow(popmatrix), mean=popmatrix[,"X"], sd=exp(popmatrix[,"D"])) #disperse offspring
+	disp<-rnorm(nrow(popmatrix), mean=popmatrix[,"X"], sd=exp(popmatrix[,"DP"])) #disperse offspring
   	#surv<-rbinom(n=length(disp), size=1, prob=d.surv(abs(disp-popmatrix[,"X"])))
   	popmatrix[,"X"]<-disp
 	popmatrix
